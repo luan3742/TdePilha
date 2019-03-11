@@ -11,30 +11,27 @@ package pilha;
  */
 public class Pilha {
 
-    private int topo;
-    private int[] dado;
+    private Object[] dado;
     private int max;
 
     public Pilha(int tamanhoVetor) {
-        this.dado = new int[tamanhoVetor];
+        this.dado = new Object[tamanhoVetor];
         this.max = 0;
-        this.topo = 0;
     }
 
-    Pilha(){
-        super();
+    Pilha() {
+        this(10);
     }
 
-    public void empilha(int elemento) {
+    public void empilha(Object elemento) {
         if (this.max < this.dado.length) {
-            this.dado[max] = elemento;
+            this.dado[this.max] = elemento;
             this.max++;
-            this.topo++;
         }
     }
 
     public void topo() {
-        System.out.println("O topo da pilha é: " + this.dado[this.max - this.topo]);
+        System.out.println("O topo da pilha é: " + this.dado[this.max - 1]);
     }
 
     public boolean vazia() {
@@ -46,15 +43,15 @@ public class Pilha {
     }
 
     public int cheia() {
-          if(this.max == this.dado.length){
-              return 1;
-          }else{
-              return 0;
-          }
+        if (this.max == this.dado.length) {
+            return 1;
+        } else {
+            return 0;
+        }
     }
-    
-    public Object desempilha(){
-        if (this.vazia() == true){
+
+    public Object desempilha() {
+        if (this.vazia() == true) {
             return "A pilha esta vazia, Impossível desempilhar";
         }
         return this.dado[--max];
